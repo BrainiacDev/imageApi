@@ -1,38 +1,153 @@
-.App {
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --default-spacing: 10px;
+  --default-margin: 1rem;
+  --medium-margin: 3rem;
+  --larger-margin: 5rem;
+  --primary-color: #7676d7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--primary-color);
+}
+
+/* common css starts */
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.title {
+  text-align: center;
+  margin-top: var(--default-margin);
+  color: #7676d7;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--default-margin);
+  margin-top: var(--medium-margin);
+  margin-bottom: var(--larger-margin);
+}
+
+.buttons .btn,
+.buttons .btn:active,
+.buttons .btn:focus {
+  background-color: var(--primary-color);
+  box-shadow: none;
+  outline: none;
+  border: none;
+  /* color: #fff; */
+}
+.buttons .btn:hover{
+  color: #fff;
+}
+
+.error-msg {
+  color: #ff0000;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* common css ends */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* search section starts */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-top: var(--default-margin);
 }
 
-.App-link {
-  color: #61dafb;
+.search-section .search-input {
+  min-width: 500px;
+  padding: var(--default-spacing);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.search-section .search-btn {
+  margin-left: var(--default-spacing);
+}
+
+/* search section ends */
+
+/* filters section starts */
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: var(--default-margin);
+}
+
+.filters > * {
+  padding: 5px 10px;
+  background: #7676d7;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* filters section ends */
+
+/* images section starts */
+
+.images {
+  margin-top: var(--medium-margin);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: var(--default-spacing);
+  justify-content: center;
+  align-items: center;
+}
+
+.images .image {
+  width: 200px;
+  height: 200px;
+  justify-self: center;
+  align-self: center;
+  margin: 1rem;
+  border-radius: 10px;
+  transition: transform 0.5s;
+}
+
+.images .image:hover {
+  transform: translateY(-3px);
+}
+
+/* images section ends */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .images {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 480px) {
+  .search-section .search-input {
+    width: 100%;
+    min-width: unset;
+    margin: 0 var(--default-margin);
+  }
+
+  .images {
+    grid-template-columns: 1fr;
   }
 }
